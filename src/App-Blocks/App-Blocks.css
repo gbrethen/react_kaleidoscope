@@ -1,0 +1,13 @@
+.card-button {
+    width: 90%;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: #e1e1e1;
+}
