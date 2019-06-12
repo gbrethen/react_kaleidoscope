@@ -1,0 +1,22 @@
+#srMain {
+    margin: 10px;
+    padding: 5px;
+}
+
+.form-width {
+    width: 45%;
+}
+
+.error {
+    border-color: red;
+}
+
+.showError {
+    display: block;
+    font-weight: 600;
+    color: red;
+}
+
+.hideError {
+    display: none;
+}

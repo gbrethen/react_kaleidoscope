@@ -5,22 +5,26 @@ import '../App-Blocks/App-Blocks';
 import AppBlocks from '../App-Blocks/App-Blocks';
 import CommonElements from '../CommonElements/CommonElements';
 import CheckerBoard from '../CheckerBoard/CheckerBoard';
+import StringReverse from '../StringReverse/StringReverse';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.toggleComponent = this.toggleComponent.bind(this);
     
-    this.state = { showCE: false, showCB: false, };
+    this.state = { showCE: false, showCB: false, showSR: false };
   }
 
   toggleComponent(x) {
     switch(x) {
       case 'showCE':
-        this.setState({ showCE: !this.state.showCE, showCB: false});
+        this.setState({ showCE: !this.state.showCE, showCB: false, showSR: false });
         break;
       case 'showCB':
-        this.setState({ showCB: !this.state.showCB, showCE: false});
+        this.setState({ showCB: !this.state.showCB, showCE: false, showSR: false });
+        break;
+      case 'showSR':
+        this.setState({ showCB: false, showCE: false, showSR: !this.state.showSR });
         break;
     }
     
@@ -32,6 +36,10 @@ class App extends React.Component {
 
   showCB() {
     return this.state.showCB;
+  }
+
+  showSR() {
+    return this.state.showSR;
   }
 
   render() {
@@ -53,6 +61,9 @@ class App extends React.Component {
               </div>
               <div className={ this.showCB() ? "showComponent" : "hideComponent"}>
                 <CheckerBoard />
+              </div>
+              <div className={ this.showSR() ? "showComponent" : "hideComponent"}>
+                <StringReverse />
               </div>
             </div>
           </div>

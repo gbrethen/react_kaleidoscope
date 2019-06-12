@@ -21,6 +21,13 @@ class AppBlocks extends React.Component {
                         <p className="card-text">This module utilizes loops to generate a checkerboard.  Click this block to try.</p>
                     </div>
                 </div>
+                <br />
+                <div className="card border-secondary card-button" onClick={ (x) => this.props.func('showSR')}>
+                    <div className="card-body">
+                        <h5 className="card-title">String Reverse</h5>
+                        <p className="card-text">This module reverses a string without built-in functions.  Click this block to try.</p>
+                    </div>
+                </div>
             </div>
         );
     }
