@@ -6,26 +6,30 @@ import AppBlocks from '../App-Blocks/App-Blocks';
 import CommonElements from '../CommonElements/CommonElements';
 import CheckerBoard from '../CheckerBoard/CheckerBoard';
 import StringReverse from '../StringReverse/StringReverse';
+import Palindrome from '../Palindrome/Palindrome';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.toggleComponent = this.toggleComponent.bind(this);
     
-    this.state = { showCE: false, showCB: false, showSR: false };
+    this.state = { showCE: false, showCB: false, showSR: false, showPD: false };
   }
 
   toggleComponent(x) {
     switch(x) {
       case 'showCE':
-        this.setState({ showCE: !this.state.showCE, showCB: false, showSR: false });
+        this.setState({ showCE: !this.state.showCE, showCB: false, showSR: false, showPD: false });
         break;
       case 'showCB':
-        this.setState({ showCB: !this.state.showCB, showCE: false, showSR: false });
+        this.setState({ showCB: !this.state.showCB, showCE: false, showSR: false, showPD: false });
         break;
       case 'showSR':
-        this.setState({ showCB: false, showCE: false, showSR: !this.state.showSR });
+        this.setState({ showCB: false, showCE: false, showSR: !this.state.showSR, showPD: false });
         break;
+        case 'showPD':
+          this.setState({ showPD: !this.state.showPD, showCB: false, showCE: false, showSR: false });
+          break;
     }
     
   }
@@ -40,6 +44,10 @@ class App extends React.Component {
 
   showSR() {
     return this.state.showSR;
+  }
+
+  showPD() {
+    return this.state.showPD;
   }
 
   render() {
@@ -64,6 +72,9 @@ class App extends React.Component {
               </div>
               <div className={ this.showSR() ? "showComponent" : "hideComponent"}>
                 <StringReverse />
+              </div>
+              <div className={ this.showPD() ? "showComponent" : "hideComponent"}>
+                <Palindrome />
               </div>
             </div>
           </div>

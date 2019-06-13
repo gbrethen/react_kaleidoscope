@@ -1,5 +1,5 @@
 import React from 'react';
-import './StringReverse.css';
+import './Palindrome.css';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ReverseString } from '../ReverseString';
@@ -10,10 +10,10 @@ function validate(string1){
     };
 }
 
-class StringReverse extends React.Component {
+class Palindrome extends React.Component {
     constructor() {
         super();
-        this.state = { string1: '', string2: '', touched: { string1: false }};
+        this.state = { string1: '', isPalindrome: 1, touched: { string1: false }};
         this.string1 = React.createRef();
     }
 
@@ -50,22 +50,29 @@ class StringReverse extends React.Component {
             
             let str2 = ReverseString(str1);
 
-            this.setState({string2: str2});
+            if(str1.toLowerCase() === str2.toLowerCase())
+                this.setState({isPalindrome: 2});
+            else
+                this.setState({isPalindrome: 3});
         }
 
     };
 
+    answer = () => {
+        return this.state.isPalindrome;
+    }
+
     clearForm = (e) => {
-        this.setState({string1: '', string2: '', touched: { string1: false }});
+        this.setState({string1: '', isPalindrome: 1, touched: { string1: false }});
     }
 
     render() {
         
         return (
-            <div id="srMain">
+            <div id="pdMain">
                 <div className="jumbotron bg-light border border-secondary">
-                    <h3 className="display-4">String Reverse</h3>
-                    <p className="lead">This component will take a string input and reverse the string without the use of built-in functions.</p>
+                    <h3 className="display-4">Palindrome</h3>
+                    <p className="lead">This component will take a string input and determine if the string is a palindrome using recursion.</p>
                 </div>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group form-width">
@@ -73,16 +80,18 @@ class StringReverse extends React.Component {
                         <input type="text" ref={this.string1} id="string1" className={this.shouldMarkError("string1") ? "error form-control" : "form-control"} value={this.state.string1} onChange={this.handleString1Change} onBlur={this.handleBlur("string1")} pattern="^[A-Za-z]+$"  required autoFocus={true} />
                         <div className={this.shouldMarkError("array1") ? "showError" : "hideError"}><span>Invalid input!</span></div>
                     </div>
-                    <button type="submit" disabled={this.isDisabled} className="btn btn-primary" >Reverse</button>
+                    <button type="submit" disabled={this.isDisabled} className="btn btn-primary" >Verify</button>
                     &nbsp;&nbsp;
                     <button type="button" className="btn btn-danger "  onClick={this.clearForm}><FontAwesomeIcon icon={faRedo} aria-hidden="true"></FontAwesomeIcon> Clear</button>
                     <hr/>
-                    <label htmlFor="txtResults">Reversed String</label>
-                    <textarea className="form-control" id="txtResults" rows="2" value={this.state.string2} readOnly></textarea>
+                    <div className="result clearfix">
+                        <div id="yes" className={this.state.isPalindrome == 2 ? 'pulseit' : ''}> Yes </div>
+                        <div id="no" className={this.state.isPalindrome == 3 ? 'pulseit' : ''}> No </div>
+                    </div>
                 </form>
         </div>
         );
     }
 }
 
-export default StringReverse;
+export default Palindrome;

@@ -28,6 +28,13 @@ class AppBlocks extends React.Component {
                         <p className="card-text">This module reverses a string without built-in functions.  <i>Click this block to try.</i></p>
                     </div>
                 </div>
+                <br />
+                <div className="card border-secondary card-button" onClick={ (x) => this.props.func('showPD')}>
+                    <div className="card-body">
+                        <h5 className="card-title">Palindrome</h5>
+                        <p className="card-text">This module will check if input string is a palindrome.  <i>Click this block to try.</i></p>
+                    </div>
+                </div>
             </div>
         );
     }
