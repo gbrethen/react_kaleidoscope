@@ -75,7 +75,7 @@ class Palindrome extends React.Component {
                     <p className="lead">This component will take a string input and determine if the string is a palindrome using recursion.</p>
                 </div>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="form-group form-width">
+                    <div className="form-group">
                         <label htmlFor="string1">Input string</label>
                         <input type="text" ref={this.string1} id="string1" className={this.shouldMarkError("string1") ? "error form-control" : "form-control"} value={this.state.string1} onChange={this.handleString1Change} onBlur={this.handleBlur("string1")} pattern="^[A-Za-z]+$"  required autoFocus={true} />
                         <div className={this.shouldMarkError("array1") ? "showError" : "hideError"}><span>Invalid input!</span></div>
@@ -83,7 +83,7 @@ class Palindrome extends React.Component {
                     <button type="submit" disabled={this.isDisabled} className="btn btn-primary" >Verify</button>
                     &nbsp;&nbsp;
                     <button type="button" className="btn btn-danger "  onClick={this.clearForm}><FontAwesomeIcon icon={faRedo} aria-hidden="true"></FontAwesomeIcon> Clear</button>
-                    <hr/>
+                    <br /><br /><br />
                     <div className="result clearfix">
                         <div id="yes" className={this.state.isPalindrome == 2 ? 'pulseit' : ''}> Yes </div>
                         <div id="no" className={this.state.isPalindrome == 3 ? 'pulseit' : ''}> No </div>
