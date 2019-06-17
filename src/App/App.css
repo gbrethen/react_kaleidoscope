@@ -46,6 +46,12 @@
   pointer-events: none;
 }
 
+form {
+  border: 1px solid #ccc;
+  width: 50%;
+  padding: 15px;
+}
+
 .showComponent {
   display: block;
 }

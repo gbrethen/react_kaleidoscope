@@ -3,12 +3,6 @@
     padding: 5px;
 }
 
-form {
-    border: 1px solid #ccc;
-    width: 50%;
-    padding: 15px;
-}
-
 .error {
     border-color: red;
 }
